@@ -78,7 +78,7 @@ func (kw *kafkaWriter) Write(p []byte) (int, error) {
 	if err := kw.producer.WriteMessages(context.Background(), kafka.Message{
 		Value: sendMessage,
 	}); err != nil {
-		fmt.Println("Unable to send the log message to Kafka")
+		fmt.Println("Unable to send the log message to Kafka:", err)
 	}
 
 	return len(p), nil
